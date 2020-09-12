@@ -17,8 +17,7 @@ ADD worker.properties /etc/libapache2-mod-jk/workers.properties
 ADD jk.conf /etc/apache2/mods-available/jk.conf
 
 
-# Copy Server (pub and key)
-# Copy CA Public Key
+# Copy Server (pub and key) and CA Public Key Cert
 COPY certs/${APACHE_SSL_CERT_CA} /etc/ssl/certs/${APACHE_SSL_CERT_CA}
 COPY certs/${APACHE_SSL_CERT} /etc/ssl/certs/${APACHE_SSL_CERT}
 COPY certs/${APACHE_SSL_PRIVATE} /etc/ssl/private/${APACHE_SSL_PRIVATE}
@@ -26,12 +25,13 @@ COPY certs/${APACHE_SSL_PRIVATE} /etc/ssl/private/${APACHE_SSL_PRIVATE}
 RUN a2enmod proxy \
 && a2enmod ssl \
 && a2enmod proxy_ajp \
-&& a2enmod proxy_http \
-&& a2enmod proxy_fcgi \
-&& a2enmod proxy_balancer \
-&& a2enmod lbmethod_byrequests \
-&& a2enmod headers \
 && a2enmod rewrite
+
+#&& a2enmod proxy_http \
+#&& a2enmod proxy_fcgi \
+#&& a2enmod proxy_balancer \
+#&& a2enmod lbmethod_byrequests \
+#&& a2enmod headers
 
 VOLUME ["/var/log/apache2"]
 
