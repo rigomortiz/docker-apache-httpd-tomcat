@@ -1,12 +1,8 @@
 version: '2'
 services:
   tomcat1:
-    expose:
-      - "9090"
     build: tomcat1/.
   tomcat2:
-    expose:
-      - "9090"
     build: tomcat2/.
   httpd:
     volumes:
@@ -16,5 +12,5 @@ services:
       - "${HOST_HTTPS_PORT}:443"
     build: httpd/.
     links:
-      - tomcat1:tomcat1
-      - tomcat2:tomcat2
+      - tomcat1:host.tomcat1
+      - tomcat2:host.tomcat2

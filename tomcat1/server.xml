@@ -66,8 +66,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector port="8080" protocol="HTTP/1.1"
-               connectionTimeout="20000"
+    <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000"
     />
     <!-- A "Connector" using the shared thread pool-->
     <!--
@@ -128,7 +127,7 @@
     <!-- You should set jvmRoute to support load-balancing via AJP ie :
     <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
     -->
-      <Engine name="Catalina" defaultHost="tomcat1" jvmRouter="tomcat1_1">
+      <Engine name="Catalina" defaultHost="host.tomcat1" jvmRouter="tomcat1_1">
 
       <!--For clustering, please take a look at documentation at:
           /docs/cluster-howto.html  (simple how to)
@@ -148,8 +147,7 @@
                resourceName="UserDatabase"/>
       </Realm>
 
-      <Host name="tomcat1"  appBase="app1"
-            unpackWARs="true" autoDeploy="true">
+      <Host name="host.tomcat1"  appBase="app1" unpackWARs="true" autoDeploy="true">
 
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
@@ -183,9 +181,7 @@
              APR (HTTP/AJP) Connector: /docs/apr.html
              Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
         -->
-        <Connector port="8081" protocol="HTTP/1.1"
-                   connectionTimeout="20000"
-        />
+        <Connector port="8081" protocol="HTTP/1.1" connectionTimeout="20000"/>
         <!-- A "Connector" using the shared thread pool-->
         <!--
         <Connector executor="tomcatThreadPool"
@@ -245,7 +241,7 @@
         <!-- You should set jvmRoute to support load-balancing via AJP ie :
         <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
         -->
-        <Engine name="Catalina" defaultHost="tomcat1" jvmRouter="tomcat1_2">
+        <Engine name="Catalina" defaultHost="host.tomcat1" jvmRouter="tomcat1_2">
 
             <!--For clustering, please take a look at documentation at:
                 /docs/cluster-howto.html  (simple how to)
@@ -265,8 +261,7 @@
                        resourceName="UserDatabase"/>
             </Realm>
 
-            <Host name="tomcat1"  appBase="app2"
-                  unpackWARs="true" autoDeploy="true">
+            <Host name="host.tomcat1" appBase="app2" unpackWARs="true" autoDeploy="true">
 
                 <!-- SingleSignOn valve, share authentication between web applications
                      Documentation at: /docs/config/valve.html -->
